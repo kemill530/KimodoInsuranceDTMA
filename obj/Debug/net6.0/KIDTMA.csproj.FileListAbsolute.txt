@@ -1,0 +1,15 @@
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\obj\Debug\net6.0\KIDTMA.csproj.AssemblyReference.cache
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\obj\Debug\net6.0\KIDTMA.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\obj\Debug\net6.0\KIDTMA.AssemblyInfoInputs.cache
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\obj\Debug\net6.0\KIDTMA.AssemblyInfo.cs
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\obj\Debug\net6.0\KIDTMA.csproj.CoreCompileInputs.cache
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\bin\Debug\net6.0\KIDTMA.exe
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\bin\Debug\net6.0\KIDTMA.deps.json
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\bin\Debug\net6.0\KIDTMA.runtimeconfig.json
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\bin\Debug\net6.0\KIDTMA.dll
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\bin\Debug\net6.0\KIDTMA.pdb
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\obj\Debug\net6.0\KIDTMA.dll
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\obj\Debug\net6.0\refint\KIDTMA.dll
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\obj\Debug\net6.0\KIDTMA.pdb
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\obj\Debug\net6.0\KIDTMA.genruntimeconfig.cache
+C:\Users\kemil\OneDrive\Desktop\codingFoundations\dotnetProjects\KIDTMA\obj\Debug\net6.0\ref\KIDTMA.dll
