@@ -5,6 +5,11 @@ public class TeamRepository
 
     private readonly List<TeamInformation> _teamDirectory = new List<TeamInformation>();
 
+    public TeamRepository()
+    {
+        TeamSeed();
+    }
+
     //CREATE
     public bool AddNewTeam(TeamInformation team)
     {
@@ -69,4 +74,25 @@ public class TeamRepository
         }
     }
 
+private void TeamSeed()
+    {
+        TeamInformation teamOne = new TeamInformation(
+            "Team 1",
+            101
+        );
+
+        TeamInformation teamTwo = new TeamInformation(
+            "Team 2",
+            202
+        );
+
+        TeamInformation teamThree = new TeamInformation(
+            "Team 3",
+            303
+        );
+
+        AddNewTeam(teamOne);
+        AddNewTeam(teamTwo);
+        AddNewTeam(teamThree);
+    }
 }

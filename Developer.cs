@@ -1,12 +1,5 @@
 
 
-public enum TeamType
-{
-    FrontEnd = 1,
-    BackEnd,
-    Mobile,
-}
-
 public class DeveloperInformation
 {
     //NAME
@@ -26,9 +19,9 @@ public class DeveloperInformation
     public bool PluralsightAcccess { get; set; }
 
     //Team
-    public TeamType TeamMemberOf { get; set; }
+    public string TeamMemberOf { get; set; }
 
-    public DeveloperInformation(string firstName, string lastName, string devID, bool pluralsightAcccess, TeamType teamMemberOf)
+    public DeveloperInformation(string firstName, string lastName, string devID, bool pluralsightAcccess, string teamMemberOf)
     {
         FirstName = firstName;
         LastName = lastName;
