@@ -28,9 +28,11 @@ public class ProgramUI
                 "6. List All Existing Teams\n" +
                 "7. View Team by ID\n" +
                 "8. Add New Team \n" +
-                "9. Update Team by ID\n" +
-                "10. Delete Team by ID\n" +
-                "11. Exit"
+                "9. Update Team Name by ID\n" +
+                "10. Add New Member to Team\n" +
+                "11. Remove Member from Team\n" +
+                "12. Delete Team by ID\n" +
+                "0. Exit"
             );
 
             string selection = Console.ReadLine();
@@ -65,11 +67,18 @@ public class ProgramUI
                 case "9": // "9. Update Team by ID\n" +
                     UpdateExistingTeam();
                     break;
-                case "10": // "10. Delete Team by ID\n"
+                case "10": // 10. Add New Member to Team\n"
+                    AddNewMemberToTeam();
+                    break;
+                case "11": //11. Remove Member from Team\n"
+                    RemoveMemberFromTeam();
+                    break;
+                case "12": // "12. Delete Team by ID\n"
                     DeleteExistingTeam();
                     break;
-                case "11":
+                case "0":
                     continueToRun = false;
+                    System.Console.WriteLine("Goodbye!");
                     break;
                 default:
                     System.Console.WriteLine("Please choose a vaild selection.");
@@ -115,7 +124,7 @@ public class ProgramUI
         newDeveloper.LastName = Console.ReadLine();
         //DevId
         System.Console.WriteLine("Enter new developer's ID (ie: AB12):");
-        newDeveloper.DevID = Console.ReadLine();
+        newDeveloper.DevID = Console.ReadLine().ToUpper();
 
         //Pluralsight Access
         System.Console.WriteLine("Does new developer have Pluralsight Access? (y/n)");
@@ -128,9 +137,6 @@ public class ProgramUI
         {
             newDeveloper.PluralsightAcccess = false;
         }
-        //Teams
-        System.Console.WriteLine("Enter Team new developer is a part of (ie: team1)");
-        string teamMemberOf = Console.ReadLine().ToLower();
 
         // Call the Add method
         bool WasAdded = _devRepo.AddNewDeveloper(newDeveloper);
@@ -155,11 +161,12 @@ public class ProgramUI
 
         System.Console.WriteLine("Enter the ID of the developer you would like to view");
 
-        string devID = Console.ReadLine();
+        string devID = Console.ReadLine().ToUpper();
         DeveloperInformation developer = _devRepo.GetDeveloperByDevID(devID);
 
         if (devID != default)
         {
+            Console.Clear();
             DisplayDeveloperInformation(developer);
         }
         else
@@ -177,11 +184,12 @@ public class ProgramUI
 
         System.Console.WriteLine("Enter the ID of the developer you want to update:");
 
-        string devID = Console.ReadLine();
+        string devID = Console.ReadLine().ToUpper();
         DeveloperInformation developer = _devRepo.GetDeveloperByDevID(devID);
 
         if (developer != null)
         {
+            Console.Clear();
             DisplayDeveloperInformation(developer);
             //First Name
             System.Console.WriteLine($"Do you want to update the current first name: {developer.FirstName}? (y/n)");
@@ -238,20 +246,20 @@ public class ProgramUI
                 System.Console.WriteLine("Please choose a valid option");
             }
 
-            //Team
-            System.Console.WriteLine($"\nDo you want to update the developer's current team: {developer.TeamMemberOf}? (y/n)");
-            string updateTeamMemberOf = Console.ReadLine().ToLower();
-            if (updateTeamMemberOf == "y")
-            {
-                System.Console.WriteLine("Enter updated Team:");
-                developer.TeamMemberOf = Console.ReadLine();
-            }
-            else if (updateTeamMemberOf == "n")
-            { }
-            else
-            {
-                System.Console.WriteLine("Please choose a valid option");
-            }
+            // //Team
+            // System.Console.WriteLine($"\nDo you want to update the developer's current team: {developer.TeamMemberOf}? (y/n)");
+            // string updateTeamMemberOf = Console.ReadLine().ToLower();
+            // if (updateTeamMemberOf == "y")
+            // {
+            //     System.Console.WriteLine("Enter updated Team:");
+            //     developer.TeamMemberOf = Console.ReadLine();
+            // }
+            // else if (updateTeamMemberOf == "n")
+            // { }
+            // else
+            // {
+            //     System.Console.WriteLine("Please choose a valid option");
+            // }
         }
         else
         {
@@ -291,7 +299,7 @@ public class ProgramUI
         Console.Clear();
         List<TeamInformation> allTeams = _teamRepo.GetAllTeams();
 
-        foreach(TeamInformation team in allTeams)
+        foreach (TeamInformation team in allTeams)
         {
             System.Console.WriteLine(
                 $"Team Name: {team.TeamName}\n" +
@@ -304,6 +312,7 @@ public class ProgramUI
     private void GetTeamByTeamID()
     {
         Console.Clear();
+        GetAllTeams();
         System.Console.WriteLine("Enter the ID of the Team you would like to view");
         string teamIDAsString = Console.ReadLine();
         int teamIDAsInt = int.Parse(teamIDAsString);
@@ -362,7 +371,7 @@ public class ProgramUI
         int teamID = int.Parse(teamIDAsString);
         //Call on repo
         TeamInformation team = _teamRepo.GetTeamByTeamID(teamID);
-        
+
         //If statment depending on if team != null
         if (team != null)
         {
@@ -389,8 +398,97 @@ public class ProgramUI
         //Send Updates to Rep
         _teamRepo.UpdateExistingTeam(team);
     }
+    //10. Add new member to team
+    private void AddNewMemberToTeam()
+    {
+        Console.Clear();
+        GetAllTeams();
+        System.Console.WriteLine("Enter the TeamID you like to add a new member to:");
+        string teamIDAsString = Console.ReadLine();
+        int teamID = int.Parse(teamIDAsString);
 
-    // 10. Delete Team by ID
+        TeamInformation team = _teamRepo.GetTeamByTeamID(teamID);
+        if (team != null)
+        {
+            DisplayTeamInformation(team);
+            //Choose team to add member to
+            System.Console.WriteLine($"Do you want to add a member to {team.TeamName} ID# {team.TeamID}? (y/n)");
+            string addNewMemberSelect = Console.ReadLine().ToLower();
+            if (addNewMemberSelect == "y")
+            {
+                Console.Clear();
+                GetAllDevelopers();
+                System.Console.WriteLine($"Enter the ID of the Developer you want to add to {team.TeamName}:");
+                string devID = Console.ReadLine().ToUpper();
+
+                DeveloperInformation devToAdd = _devRepo.GetDeveloperByDevID(devID);
+                team.AddNewMemberToTeam(devToAdd);
+
+                bool WasAdded = team.AddNewMemberToTeam(devToAdd);
+                // //provide confirmation
+                if (WasAdded)
+                {
+                    System.Console.WriteLine("Developer added successfully!");
+                }
+                else
+                {
+                    System.Console.WriteLine("Sorry, developer was not added");
+                }
+            }
+            else if (addNewMemberSelect == "n")
+            { }
+        }
+        else
+        {
+            System.Console.WriteLine("Please choose a valid option");
+        }
+    }
+
+    //11. Remove memeber from team
+    private void RemoveMemberFromTeam()
+    {
+        Console.Clear();
+        GetAllTeams();
+        System.Console.WriteLine("Enter the TeamID you like to remove a member from:");
+        string teamIDAsString = Console.ReadLine();
+        int teamID = int.Parse(teamIDAsString);
+
+        TeamInformation team = _teamRepo.GetTeamByTeamID(teamID);
+        if (team != null)
+        {
+            DisplayTeamInformation(team);
+            //Get teamID to remove member from
+            System.Console.WriteLine($"Do you want to remove a member from {team.TeamName} ID# {team.TeamID}? (y/n)");
+            string removeMemberSelect = Console.ReadLine().ToLower();
+            if (removeMemberSelect == "y")
+            {
+                System.Console.WriteLine($"Enter the ID of the Developer you want to remove:");
+                string devID = Console.ReadLine().ToUpper();
+
+                DeveloperInformation devToRemove = _devRepo.GetDeveloperByDevID(devID);
+                team.RemoveMemberFromTeam(devToRemove);
+
+                bool WasRemoved = team.RemoveMemberFromTeam(devToRemove);
+                //provide confirmation
+                if (WasRemoved)
+                {
+                    System.Console.WriteLine("Developer removed successfully!");
+                }
+                else
+                {
+                    System.Console.WriteLine("Sorry, developer was not removed");
+                }
+            }
+            else if (removeMemberSelect == "n")
+            { }
+            else
+            {
+                System.Console.WriteLine("Please choose a valid option");
+            }
+        }
+    }
+
+    // 12. Delete Team by ID
     private void DeleteExistingTeam()
     {
         Console.Clear();
@@ -423,18 +521,21 @@ public class ProgramUI
                 $"First Name: {developer.FirstName}\n" +
                 $"Last Name: {developer.LastName}\n" +
                 $"ID: {developer.DevID}\n" +
-                $"Pluralsight Access: {developer.PluralsightAcccess}\n" +
-                $"Team Member of: {developer.TeamMemberOf}\n"
+                $"Pluralsight Access: {developer.PluralsightAcccess}\n"
             );
     }
 
     private void DisplayTeamInformation(TeamInformation team)
     {
+        Console.Clear();
         System.Console.WriteLine
         (
             $"Team Name: {team.TeamName}\n" +
-            $"Team ID: {team.TeamID}\n" +
-            $"Team Members: {team.TeamMemberList}\n"
+            $"Team ID: {team.TeamID}\n"
         );
+        foreach (DeveloperInformation dev in team.TeamMemberList)
+        {
+            System.Console.WriteLine($"{dev.FullName} ID: {dev.DevID} ");
+        }
     }
 }

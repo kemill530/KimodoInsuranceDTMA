@@ -18,17 +18,13 @@ public class DeveloperInformation
     //Pluralsight Bool
     public bool PluralsightAcccess { get; set; }
 
-    //Team
-    public string TeamMemberOf { get; set; }
-
     public DeveloperInformation() { }
-    public DeveloperInformation(string firstName, string lastName, string devID, bool pluralsightAcccess, string teamMemberOf)
+    public DeveloperInformation(string firstName, string lastName, string devID, bool pluralsightAcccess)
     {
         FirstName = firstName;
         LastName = lastName;
         DevID = devID;
         PluralsightAcccess = pluralsightAcccess;
-        TeamMemberOf = teamMemberOf;
     }
 }
 

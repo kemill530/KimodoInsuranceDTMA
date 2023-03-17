@@ -22,6 +22,7 @@ public class TeamRepository
         return WasAdded;
     }
 
+
     //READ
 
     public List<TeamInformation> GetAllTeams()

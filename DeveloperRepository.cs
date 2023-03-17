@@ -49,8 +49,6 @@ public class DeveloperRepository
                 oldInformation.FirstName = newInformation.FirstName;
                 oldInformation.LastName = newInformation.LastName;
                 oldInformation.PluralsightAcccess = newInformation.PluralsightAcccess;
-                oldInformation.TeamMemberOf = newInformation.TeamMemberOf;
-
                 return true;
             }
             else
@@ -81,48 +79,42 @@ public class DeveloperRepository
             "Kali",
             "Miller",
             "KM12",
-            true,
-            "team1"
+            true
         );
 
         DeveloperInformation developerTwo = new DeveloperInformation(
             "John",
             "James",
             "JJ34",
-            true,
-            "team2"
+            true
         );
 
         DeveloperInformation developerThree = new DeveloperInformation(
             "Amelia",
             "Martin",
             "AM56",
-            false,
-            "team3"
+            false
         );
 
         DeveloperInformation developerFour = new DeveloperInformation(
             "Phillip",
             "Grant",
             "PG78",
-            true,
-            "team3"
+            true
         );
 
         DeveloperInformation developerFive = new DeveloperInformation(
             "Sarah",
             "Vicks",
             "SV90",
-            false,
-            "team2"
+            false
         );
 
         DeveloperInformation developerSix = new DeveloperInformation(
             "Eric",
             "Erickson",
             "EE23",
-            true,
-            "team1"
+            true
         );
 
         AddNewDeveloper(developerOne);
