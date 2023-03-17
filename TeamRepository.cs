@@ -41,9 +41,9 @@ public class TeamRepository
         return null;
     }
     //UPDATE
-    public bool UpdateExistingTeam(int OriginalTeamID, TeamInformation newInformation)
+    public bool UpdateExistingTeam(TeamInformation newInformation)
     {
-        TeamInformation oldInformation = GetTeamByTeamID(OriginalTeamID);
+        TeamInformation oldInformation = GetTeamByTeamID(newInformation.TeamID);
         {
             if (oldInformation != null)
             {
@@ -74,20 +74,20 @@ public class TeamRepository
         }
     }
 
-private void TeamSeed()
+    private void TeamSeed()
     {
         TeamInformation teamOne = new TeamInformation(
-            "Team 1",
+            "team1",
             101
         );
 
         TeamInformation teamTwo = new TeamInformation(
-            "Team 2",
+            "team2",
             202
         );
 
         TeamInformation teamThree = new TeamInformation(
-            "Team 3",
+            "team3",
             303
         );
 

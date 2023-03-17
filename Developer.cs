@@ -21,6 +21,7 @@ public class DeveloperInformation
     //Team
     public string TeamMemberOf { get; set; }
 
+    public DeveloperInformation() { }
     public DeveloperInformation(string firstName, string lastName, string devID, bool pluralsightAcccess, string teamMemberOf)
     {
         FirstName = firstName;

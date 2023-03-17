@@ -82,7 +82,7 @@ public class DeveloperRepository
             "Miller",
             "KM12",
             true,
-            "Team 1"
+            "team1"
         );
 
         DeveloperInformation developerTwo = new DeveloperInformation(
@@ -90,7 +90,7 @@ public class DeveloperRepository
             "James",
             "JJ34",
             true,
-            "Team 2"
+            "team2"
         );
 
         DeveloperInformation developerThree = new DeveloperInformation(
@@ -98,7 +98,7 @@ public class DeveloperRepository
             "Martin",
             "AM56",
             false,
-            "Team 2"
+            "team3"
         );
 
         DeveloperInformation developerFour = new DeveloperInformation(
@@ -106,7 +106,7 @@ public class DeveloperRepository
             "Grant",
             "PG78",
             true,
-            "Team 3"
+            "team3"
         );
 
         DeveloperInformation developerFive = new DeveloperInformation(
@@ -114,7 +114,7 @@ public class DeveloperRepository
             "Vicks",
             "SV90",
             false,
-            "Team 1"
+            "team2"
         );
 
         DeveloperInformation developerSix = new DeveloperInformation(
@@ -122,7 +122,7 @@ public class DeveloperRepository
             "Erickson",
             "EE23",
             true,
-            "Team 3"
+            "team1"
         );
 
         AddNewDeveloper(developerOne);
